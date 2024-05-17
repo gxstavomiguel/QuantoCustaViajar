@@ -1,0 +1,338 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="Dados do gasto"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/gridGasolina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="25dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="4"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/subTituloTotalkm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Total Km"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentTituloTotalkm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Total de km" />
+
+        <TextView
+            android:id="@+id/subTituloMediaKmLitro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Media Km/L"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentMediaKmLitro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Media km/L" />
+
+        <TextView
+            android:id="@+id/subTituloCustoLitro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Custo por Litro"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentCustoLitro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Custo/L" />
+
+        <TextView
+            android:id="@+id/subTituloTotalVeiculos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Total de veiculos"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentTotalVeiculos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Total de veiculos" />
+
+    </GridLayout>
+
+
+    <GridLayout
+        android:id="@+id/gridTarifa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="25dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="4"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/subTituloCustoTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Total Km"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentCustoTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Custo total" />
+
+        <TextView
+            android:id="@+id/subTituloAluguelVeiculo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Valor aluguel do veículo"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentAluguelVeiculo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Valor" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridRefeicoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="25dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="4"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/subTituloCustoRefeicao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Custo por refeicao"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentCustoRefeicao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="valor" />
+
+        <TextView
+            android:id="@+id/subTituloRefeicoesPorDia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Refeições por dia"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentRefeicoesPorDia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Quantidade" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridHospedagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="25dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="4"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/subTituloCustoPorNoite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Custo por noite"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentCustoPorNoite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Valor" />
+
+        <TextView
+            android:id="@+id/subTituloTotalNoites"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Total de noites"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentTotalNoites"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Quantidade" />
+
+        <TextView
+            android:id="@+id/subTituloTotalQuartos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Total de quartos"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentTotalQuartos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Quantidade" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridentretenimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="25dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="4"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/subTituloDescricaoEntretenimento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Descricao"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentDescricaoEntretenimento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Nome da atividade" />
+
+        <TextView
+            android:id="@+id/subTituloCustoEntretenimento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Custo"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/contentCustoEntretenimento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Valor" />
+
+    </GridLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="31dp">
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Voltar"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnAddGasto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Adicionar Gasto"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
