@@ -11,6 +11,4 @@ public class Viagem {
     public String destino;
     public int totalViajantes;
     public int duracaoDias;
-    public double custoTotal;
-    public double custoPorPessoa;
 }
