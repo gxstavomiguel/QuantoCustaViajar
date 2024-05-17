@@ -21,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_viagem);
 
         etDestino = findViewById(R.id.etDestino);
         etTotalViajantes = findViewById(R.id.etTotalViajantes);
-        etDuracaoDias = findViewById(R.id.etDuracaoDias);
-        etCustoTotal = findViewById(R.id.etCustoTotal);
-        btnAddViagem = findViewById(R.id.btnAddViagem);
-        tvRelatorio = findViewById(R.id.tvRelatorio);
+//        etDuracaoDias = findViewById(R.id.etDuracaoDias);
+//        etCustoTotal = findViewById(R.id.etCustoTotal);
+//        btnAddViagem = findViewById(R.id.btnEndViagem);
+//        tvRelatorio = findViewById(R.id.tvRelatorio);
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "viagens-database").allowMainThreadQueries().build();
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         viagem.destino = destino;
         viagem.totalViajantes = totalViajantes;
         viagem.duracaoDias = duracaoDias;
-        viagem.custoTotal = custoTotal;
-        viagem.custoPorPessoa = custoPorPessoa;
+//        viagem.custoTotal = custoTotal;
+//        viagem.custoPorPessoa = custoPorPessoa;
 
         db.viagemDao().insert(viagem);
 
@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
         for (Viagem viagem : db.viagemDao().getAll()) {
             relatorio.append("Destino: ").append(viagem.destino).append("\n")
                     .append("Total de Viajantes: ").append(viagem.totalViajantes).append("\n")
-                    .append("Duração: ").append(viagem.duracaoDias).append(" dias\n")
-                    .append("Custo Total: R$ ").append(viagem.custoTotal).append("\n")
-                    .append("Custo por Pessoa: R$ ").append(viagem.custoPorPessoa).append("\n\n");
+                    .append("Duração: ").append(viagem.duracaoDias).append(" dias\n");
+//                    .append("Custo Total: R$ ").append(viagem.custoTotal).append("\n")
+//                    .append("Custo por Pessoa: R$ ").append(viagem.custoPorPessoa).append("\n\n");
         }
         tvRelatorio.setText(relatorio.toString());
     }
