@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.quantocustaviajar.db.database.AppDatabase;
+import com.example.quantocustaviajar.db.model.Usuario;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
@@ -43,8 +44,18 @@ public class MainActivity extends AppCompatActivity {
         if (username.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
         } else {
-            // Adicione a lógica de autenticação aqui
-            Toast.makeText(this, "Login bem-sucedido", Toast.LENGTH_SHORT).show();
+            Usuario user = db.usuarioDao().findUserByUsernameAndPassword(username, password);
+            if (user != null) {
+                Toast.makeText(this, "Login bem-sucedido", Toast.LENGTH_SHORT).show();
+                try {
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Toast.makeText(this, "Credenciais inválidas", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

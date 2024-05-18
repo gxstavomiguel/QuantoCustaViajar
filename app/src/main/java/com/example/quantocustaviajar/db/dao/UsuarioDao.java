@@ -16,4 +16,7 @@ public interface UsuarioDao {
 
     @Query("SELECT * FROM Usuario")
     List<Usuario> getAllUsers();
+
+    @Query("SELECT * FROM Usuario WHERE name = :username AND password = :password")
+    Usuario findUserByUsernameAndPassword(String username, String password);
 }
