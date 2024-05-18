@@ -13,7 +13,6 @@
         android:theme="@style/Theme.QuantoCustaViajar"
         tools:targetApi="31">
         <activity android:name=".Registrar" />
-        <activity android:name=".HomeActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
