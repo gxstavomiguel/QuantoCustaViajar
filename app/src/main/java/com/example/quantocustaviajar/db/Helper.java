@@ -42,6 +42,13 @@ public class Helper extends SQLiteOpenHelper {
                 "\tdescricao TEXT,\n" +
                 "\tcusto REAL)";
         db.execSQL(createTableEntretenimento);
+
+
+        String createTableUsuario = "CREATE TABLE usuario \n" +
+                "\t(id INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
+                "\tusername TEXT,\n" +
+                "\tpassword TEXT)";
+        db.execSQL(createTableUsuario);
     }
 
     @Override
