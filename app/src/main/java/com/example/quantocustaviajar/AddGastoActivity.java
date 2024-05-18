@@ -1,11 +1,17 @@
 package com.example.quantocustaviajar;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.quantocustaviajar.db.Helper;
 
 public class AddGastoActivity extends AppCompatActivity {
 
@@ -58,7 +64,25 @@ public class AddGastoActivity extends AppCompatActivity {
         btnAddGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Implementar lógica para adicionar gasto
+                String totalKm = String.valueOf(findViewById(R.id.contentTituloTotalkm));
+                String mediaKmPorLitro = String.valueOf(findViewById(R.id.contentMediaKmLitro));
+                String custoPorLitro = String.valueOf(findViewById(R.id.contentCustoLitro));
+                String totalVeiculos = String.valueOf(findViewById(R.id.contentTotalVeiculos));
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("gasolina_total_km", Double.parseDouble(totalKm));
+                contentValues.put("gasolina_media_km_por_litro", Double.parseDouble(mediaKmPorLitro));
+                contentValues.put("gasolina_custo_medio_por_litro", Double.parseDouble(custoPorLitro));
+                contentValues.put("gasolina_total_veiculos", Integer.parseInt(totalVeiculos));
+
+                SQLiteDatabase db = new Helper(AddGastoActivity.this).getWritableDatabase();
+                long result = db.insert("viagem", null, contentValues);
+
+                if (result != -1) {
+                    Toast.makeText(AddGastoActivity.this, "Dados do gasto adicionados com sucesso", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddGastoActivity.this, "Erro ao adicionar os dados do gasto", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

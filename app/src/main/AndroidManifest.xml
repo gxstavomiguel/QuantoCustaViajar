@@ -26,6 +26,7 @@
         <activity android:name=".RelatorioActivity" />
         <activity android:name=".SelectTipoGastoActivity" />
         <activity android:name=".AddViagemActivity" />
+        <activity android:name=".AddGastoActivity" />
         <activity android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
