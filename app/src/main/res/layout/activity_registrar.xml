@@ -6,7 +6,7 @@
     android:gravity="center">
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name" />
@@ -26,7 +26,7 @@
         android:inputType="phone" />
 
     <EditText
-        android:id="@+id/etNewPassword"
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"

@@ -20,10 +20,10 @@ public class Registrar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
-        etName = findViewById(R.id.etName);
+        etName = findViewById(R.id.etUsername);
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
-        etNewPassword = findViewById(R.id.etNewPassword);
+        etNewPassword = findViewById(R.id.etPassword);
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
 
         db = Room.databaseBuilder(getApplicationContext(),
