@@ -21,6 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EndViagemActivity" />
+        <activity android:name=".RelatorioActivity" />
+        <activity android:name=".SelectTipoGastoActivity" />
+        <activity android:name=".AddViagemActivity" />
+        <activity android:name=".HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
