@@ -1,6 +1,8 @@
 package com.example.quantocustaviajar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,10 +31,10 @@ public class Registrar extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "users-database").allowMainThreadQueries().build();
 
-        btnCreateAccount.setOnClickListener(v -> createAccount());
+        btnCreateAccount.setOnClickListener(v -> registrar());
     }
 
-    private void createAccount() {
+    private void registrar() {
         String name = etName.getText().toString();
         String email = etEmail.getText().toString();
         String phone = etPhone.getText().toString();
@@ -40,7 +42,8 @@ public class Registrar extends AppCompatActivity {
 
         if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else {
             // Adicione a lógica de criação de conta aqui
             Usuario newUser = new Usuario();
             newUser.name = name;
@@ -50,7 +53,11 @@ public class Registrar extends AppCompatActivity {
 
             db.usuarioDao().insert(newUser);
             Toast.makeText(this, "Conta criada com sucesso", Toast.LENGTH_SHORT).show();
-            finish();
+            new Handler().postDelayed(() -> {
+                Intent intent = new Intent(Registrar.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }, 100);
         }
     }
 }
