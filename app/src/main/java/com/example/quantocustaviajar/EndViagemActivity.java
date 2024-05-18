@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.quantocustaviajar.db.Helper;
+
 
 public class EndViagemActivity extends AppCompatActivity {
 
@@ -48,7 +50,7 @@ public class EndViagemActivity extends AppCompatActivity {
     }
 
     private void updateViagemStatus(String dataFim) {
-        com.example.myapp.Helper dbHelper = new com.example.myapp.Helper(this);
+        Helper dbHelper = new Helper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         String updateQuery = "UPDATE viagem SET status = 'finalizado', data_fim = ? WHERE id = ?";
