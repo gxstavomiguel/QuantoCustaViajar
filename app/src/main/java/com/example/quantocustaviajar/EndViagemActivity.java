@@ -1,6 +1,7 @@
 package com.example.quantocustaviajar;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -53,13 +54,21 @@ public class EndViagemActivity extends AppCompatActivity {
         Helper dbHelper = new Helper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        String updateQuery = "UPDATE viagem SET status = 'finalizado', data_fim = ? WHERE id = ?";
-        db.execSQL(updateQuery, new String[]{dataFim, "ID_DA_VIAGEM"});
+        Cursor cursor = db.rawQuery("SELECT id FROM viagem WHERE status = 'aberto'", null);
+        if (cursor.moveToFirst()) {
+            int viagemId = cursor.getInt(0);
 
-        Toast.makeText(this, "Viagem finalizada com sucesso", Toast.LENGTH_SHORT).show();
+            String updateQuery = "UPDATE viagem SET status = 'finalizado', data_fim = ? WHERE id = ?";
+            db.execSQL(updateQuery, new Object[]{dataFim, viagemId});
 
-        Intent intent = new Intent(EndViagemActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
+            Toast.makeText(this, "Viagem finalizada com sucesso", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(EndViagemActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Nenhuma viagem com status 'aberto' encontrada", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
     }
 }

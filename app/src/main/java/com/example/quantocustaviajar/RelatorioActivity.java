@@ -46,12 +46,19 @@ public class RelatorioActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Consultar a tabela viagem
-        String query = "SELECT destino, data_inicio, data_fim, qt_pessoas, " +
-                "(SELECT SUM(gasolina_total_km * gasolina_custo_medio_por_litro) + " +
-                "SUM(tarifa_custo_total) + SUM(refeicao_custo_por_refeicao * refeicao_num_refeicoes_por_dia) + " +
-                "SUM(hospedagem_custo_por_noite * hospedagem_total_noites) " +
-                "FROM viagem) AS custo_total " +
-                "FROM viagem ORDER BY id DESC LIMIT 1";
+        String query = "SELECT destino, \n" +
+                "       data_inicio, \n" +
+                "       data_fim, \n" +
+                "       qt_pessoas,\n" +
+                "       ((gasolina_total_km / gasolina_media_km_por_litro * gasolina_custo_medio_por_litro / gasolina_total_veiculos) + \n" +
+                "       (tarifa_custo_total * QT_PESSOAS + TARIFA_ALUGUEL_VEICULO) + \n" +
+                "       (refeicao_custo_por_refeicao * refeicao_num_refeicoes_por_dia * REFEICAO_CUSTO_POR_REFEICAO * ((julianday(strftime('%Y-%m-%d', substr(data_fim, 7, 4) || '-' || substr(data_fim, 4, 2) || '-' || substr(data_fim, 1, 2))) - \n" +
+                "        julianday(strftime('%Y-%m-%d', substr(data_inicio, 7, 4) || '-' || substr(data_inicio, 4, 2) || '-' || substr(data_inicio, 1, 2)))))) + \n" +
+                "       (hospedagem_custo_por_noite * hospedagem_total_noites * HOSPEDAGEM_TOTAL_QUARTOS) +\n" +
+                "       (SELECT sum(custo) FROM ENTRETENIMENTO)) AS custo_total\n" +
+                "       FROM viagem \n" +
+                "       WHERE status = 'aberto'\n" +
+                "       ORDER BY id DESC LIMIT 1;";
 
         Cursor cursor = db.rawQuery(query, null);
 

@@ -1,6 +1,7 @@
 package com.example.quantocustaviajar;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -55,13 +56,19 @@ public class AddViagemActivity extends AppCompatActivity {
         Helper dbHelper = new Helper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        String insertQuery = "INSERT INTO viagem (destino, qt_pessoas, data_inicio, status) VALUES (?, ?, ?, ?)";
-        db.execSQL(insertQuery, new String[]{destino, totalViajantes, dataInicio, "em andamento"});
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM viagem WHERE status = 'aberto'", null);
+        if (cursor.moveToFirst() && cursor.getInt(0) > 0) {
+            Toast.makeText(this, "Já existe uma viagem em andamento. Finalize-a antes de criar uma nova.", Toast.LENGTH_SHORT).show();
+        } else {
+            String insertQuery = "INSERT INTO viagem (destino, qt_pessoas, data_inicio, status) VALUES (?, ?, ?, ?)";
+            db.execSQL(insertQuery, new String[]{destino, totalViajantes, dataInicio, "aberto"});
 
-        Toast.makeText(this, "Viagem adicionada com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Viagem adicionada com sucesso", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(AddViagemActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
+            Intent intent = new Intent(AddViagemActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        cursor.close();
     }
 }
