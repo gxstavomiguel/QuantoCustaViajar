@@ -1,4 +1,4 @@
 package com.example.quantocustaviajar;
 
-public class HomeActivity {
+public class SelectTipoGastoActivity {
 }
