@@ -19,4 +19,7 @@ public interface UsuarioDao {
 
     @Query("SELECT * FROM Usuario WHERE name = :username AND password = :password")
     Usuario findUserByUsernameAndPassword(String username, String password);
+
+    //@Query("SELECT * FROM usuario WHERE email = :email LIMIT 1")
+   // Usuario findByEmail(String email);
 }
