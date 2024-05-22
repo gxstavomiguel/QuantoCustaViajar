@@ -14,7 +14,7 @@
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
-        app:srcCompat="@drawable/IconeIncomp" />
+        app:srcCompat="@drawable/icone_incomp" />
 
     <EditText
         android:id="@+id/etUsername"
