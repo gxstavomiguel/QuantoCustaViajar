@@ -10,11 +10,13 @@
         android:padding="16dp"
         android:layout_alignParentTop="true">
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etDestino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Destino" />
+            android:hint="@string/hint_destino"/>
+
+
 
         <EditText
             android:id="@+id/etTotalViajantes"

@@ -33,12 +33,13 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btnCreateAccount"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/golden"
-        android:text="Create Account" />
+        android:orientation="vertical"
+        android:layout_marginTop="32dp">
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnLogin"
@@ -46,5 +47,23 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/golden"
         android:text="Login" />
+
+    <Button
+        android:id="@+id/btnCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/golden"
+        android:text="Create Account" />
+
+
+    <ImageView
+        android:id="@+id/btnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/botao_home" />
 
 </LinearLayout>

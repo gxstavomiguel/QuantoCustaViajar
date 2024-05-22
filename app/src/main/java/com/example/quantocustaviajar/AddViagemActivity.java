@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,8 +15,11 @@ import com.example.quantocustaviajar.db.Helper;
 
 public class AddViagemActivity extends AppCompatActivity {
 
-    private EditText etDestino, etTotalViajantes, etDataInicio;
+    private EditText  etTotalViajantes, etDataInicio;
     private Button btnVoltar, btnConfirmAddViagem;
+
+    private AutoCompleteTextView etDestino;
+    private String[] destinos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,14 @@ public class AddViagemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_viagem);
 
         etDestino = findViewById(R.id.etDestino);
+        destinos = getResources().getStringArray(R.array.destinos_array);
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, destinos);
+        etDestino.setAdapter(adapter);
+
+
+
         etTotalViajantes = findViewById(R.id.etTotalViajantes);
         etDataInicio = findViewById(R.id.etDataInicio);
         btnVoltar = findViewById(R.id.btnVoltar);

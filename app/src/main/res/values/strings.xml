@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">QuantoCustaViajar</string>
+    <string name="app_name">Nome do Seu Aplicativo</string>
+    <string name="hint_destino">Destino</string>
+    <string-array name="destinos_array">
+        <item>São Paulo</item>
+        <item>Rio de Janeiro</item>
+        <item>Florianópolis</item>
+        <item>Criciúma</item>
+        <item>Içara</item>
+    </string-array>
 </resources>
