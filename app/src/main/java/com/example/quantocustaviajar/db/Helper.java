@@ -23,17 +23,17 @@ public class Helper extends SQLiteOpenHelper {
                 "\tdata_inicio DATE,\n" +
                 "\tdata_fim DATE,\n" +
                 "\tstatus TEXT,\n" +
-                "\tgasolina_total_km REAL,\n" +
-                "\tgasolina_media_km_por_litro REAL,\n" +
-                "\tgasolina_custo_medio_por_litro REAL,\n" +
-                "\tgasolina_total_veiculos INTEGER,\n" +
-                "\ttarifa_custo_total REAL,\n" +
-                "\ttarifa_aluguel_veiculo REAL,\n" +
-                "\trefeicao_custo_por_refeicao REAL,\n" +
-                "\trefeicao_num_refeicoes_por_dia INTEGER,\n" +
-                "\thospedagem_custo_por_noite REAL, \n" +
-                "\thospedagem_total_noites INTEGER, \n" +
-                "\thospedagem_total_quartos INTEGER) ";
+                "\tgasolina_total_km REAL DEFAULT 0,\n" +
+                "\tgasolina_media_km_por_litro REAL DEFAULT 0,\n" +
+                "\tgasolina_custo_medio_por_litro REAL DEFAULT 0,\n" +
+                "\tgasolina_total_veiculos INTEGER DEFAULT 0,\n" +
+                "\ttarifa_custo_total REAL DEFAULT 0,\n" +
+                "\ttarifa_aluguel_veiculo REAL DEFAULT 0,\n" +
+                "\trefeicao_custo_por_refeicao REAL DEFAULT 0,\n" +
+                "\trefeicao_num_refeicoes_por_dia INTEGER DEFAULT 0,\n" +
+                "\thospedagem_custo_por_noite REAL DEFAULT 0, \n" +
+                "\thospedagem_total_noites INTEGER DEFAULT 0, \n" +
+                "\thospedagem_total_quartos INTEGER DEFAULT 0) ";
         db.execSQL(createTableViagem);
 
         String createTableEntretenimento = "CREATE TABLE entretenimento \n" +
