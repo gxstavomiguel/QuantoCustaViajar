@@ -40,11 +40,19 @@
         android:backgroundTint="@color/golden"
         android:text="Create Account" />
 
-    <Button
+    <TextView
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:backgroundTint="@color/golden"/>
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true" />
+
 
 </LinearLayout>

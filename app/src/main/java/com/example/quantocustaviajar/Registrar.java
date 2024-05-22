@@ -14,14 +14,16 @@ import com.example.quantocustaviajar.db.model.Usuario;
 
 public class Registrar extends AppCompatActivity {
     private EditText etName, etEmail, etPhone, etNewPassword;
-    private Button btnCreateAccount;
+    private Button btnCreateAccount, btnLogin;
     private AppDatabase db;
 
+    //enricuuuu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
+        btnLogin = findViewById(R.id.btnLogin);
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
