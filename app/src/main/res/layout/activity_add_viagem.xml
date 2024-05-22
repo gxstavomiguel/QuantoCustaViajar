@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Data de início"
-            android:inputType="date" />
+            android:focusable="false"
+            android:clickable="true" />
 
     </LinearLayout>
 
