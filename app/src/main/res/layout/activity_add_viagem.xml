@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     android:padding="16dp">
 
     <LinearLayout
@@ -14,16 +15,15 @@
             android:id="@+id/etDestino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_destino"/>
+            android:hint="@string/hint_destino" />
 
-
-
-        <EditText
-            android:id="@+id/etTotalViajantes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Total de Viajantes"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/etTotalViajantes"
+                android:layout_width="335dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Total de Viajantes"
+                android:inputType="number" />
 
         <EditText
             android:id="@+id/etDataInicio"
@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Voltar"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/golden"/>
 
         <Button
             android:id="@+id/btnConfirmAddViagem"
@@ -56,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Adicionar Viagem"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/golden"/>
 
     </LinearLayout>
 
