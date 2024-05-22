@@ -36,16 +36,18 @@ public class SelectTipoGastoActivity extends AppCompatActivity {
             }
         });
 
-        btnConfirmaTipoGasto.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public void onClick(View v) {
-                int selectedId = radioGroup.getCheckedRadioButtonId();
-                RadioButton selectedRadioButton = findViewById(selectedId);
+        if (!existeViagemAberta()) {
+            btnConfirmaTipoGasto.setEnabled(false);
+            Toast.makeText(this, "Não existe uma viagem aberta. Adicione uma viagem primeiro.", Toast.LENGTH_LONG).show();
+        } else {
+            btnConfirmaTipoGasto.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("NonConstantResourceId")
+                @Override
+                public void onClick(View v) {
+                    int selectedId = radioGroup.getCheckedRadioButtonId();
+                    RadioButton selectedRadioButton = findViewById(selectedId);
 
-                if (selectedRadioButton != null) {
-                    // Verificar se existe uma viagem com status "aberto"
-                    if (existeViagemAberta()) {
+                    if (selectedRadioButton != null) {
                         String tipoGasto = "";
 
                         if (selectedRadioButton.getId() == R.id.radioButtonGasolina) {
@@ -64,13 +66,11 @@ public class SelectTipoGastoActivity extends AppCompatActivity {
                         intent.putExtra("TIPO_GASTO", tipoGasto);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(SelectTipoGastoActivity.this, "Não existe uma viagem aberta. Adicione uma viagem primeiro.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectTipoGastoActivity.this, "Selecione um tipo de gasto.", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(SelectTipoGastoActivity.this, "Selecione um tipo de gasto.", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+            });
+        }
     }
 
     private boolean existeViagemAberta() {
