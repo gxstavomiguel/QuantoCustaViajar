@@ -22,7 +22,7 @@
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
+        android:hint="Nome"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
         android:background="@drawable/edittext_background"
@@ -45,7 +45,7 @@
         android:id="@+id/etPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone"
+        android:hint="Fone"
         android:inputType="phone"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
@@ -57,7 +57,7 @@
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Senha"
         android:inputType="textPassword"
         android:layout_marginBottom="32dp"
         android:padding="12dp"
@@ -73,22 +73,22 @@
         android:layout_marginTop="32dp">
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnCreateAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/golden"
-            android:text="Login"
+            android:text="Criar conta"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:padding="12dp" />
 
         <Button
-            android:id="@+id/btnCreateAccount"
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/golden"
-            android:text="Create Account"
+            android:text="Voltar"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:padding="12dp" />
