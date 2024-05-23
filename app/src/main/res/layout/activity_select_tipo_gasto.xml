@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     android:padding="16dp">
 
     <RadioGroup
@@ -70,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Voltar"
+            android:backgroundTint="@color/golden"
             android:layout_marginEnd="8dp" />
 
         <Button
@@ -78,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dados do gasto"
+            android:backgroundTint="@color/golden"
             android:layout_marginEnd="8dp" />
 
 

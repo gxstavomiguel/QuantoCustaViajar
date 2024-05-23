@@ -34,16 +34,6 @@ public class Registrar extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "users-database").allowMainThreadQueries().build();
 
-        ImageView btnHome = findViewById(R.id.btnHome);
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Registrar.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
