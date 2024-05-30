@@ -14,7 +14,7 @@
         android:text="Selecione uma opção"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/black"/>
 
     <!-- Botões centralizados em um LinearLayout vertical -->
     <LinearLayout
