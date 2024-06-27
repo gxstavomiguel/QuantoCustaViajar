@@ -14,10 +14,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.quantocustaviajar.db.Helper;
+import com.example.quantocustaviajar.db.api.ViagemAPI;
+import com.example.quantocustaviajar.db.model.Resposta;
+import com.example.quantocustaviajar.db.model.TB_VIAGEM;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddViagemActivity extends AppCompatActivity {
 
@@ -27,6 +36,7 @@ public class AddViagemActivity extends AppCompatActivity {
 
     private AutoCompleteTextView etDestino;
     private String[] destinos;
+    private ViagemAPI viagemAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +90,13 @@ public class AddViagemActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://api.genialsaude.com.br/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        viagemAPI = retrofit.create(ViagemAPI.class);
     }
 
     private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -93,13 +110,47 @@ public class AddViagemActivity extends AppCompatActivity {
     };
 
     private void updateLabel() {
-        String myFormat = "dd/MM/yyyy"; // In which you need put here
+        String myFormat = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         etDataInicio.setText(sdf.format(calendar.getTime()));
     }
 
     private void addViagem(String destino, String totalViajantes, String dataInicio) {
+        // Construir o objeto TB_VIAGEM com os dados fornecidos
+        TB_VIAGEM viagem = new TB_VIAGEM();
+        viagem.setTotalViajantes(Integer.parseInt(totalViajantes));
+        viagem.setCustoPorPessoa(viagem.getCustoTotalViagem() / viagem.getTotalViajantes());
+        viagem.setLocal(destino);
+
+        // Enviar a requisição de cadastro de viagem
+        Call<Resposta> call = viagemAPI.cadastrarViagem(viagem);
+        call.enqueue(new Callback<Resposta>() {
+            @Override
+            public void onResponse(Call<Resposta> call, Response<Resposta> response) {
+                if (response.isSuccessful()) {
+                    Resposta resposta = response.body();
+                    if (resposta != null && resposta.isSucesso()) {
+                        Toast.makeText(AddViagemActivity.this, "Viagem adicionada com sucesso", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(AddViagemActivity.this, "Erro ao adicionar viagem: " + resposta.getMensagem(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(AddViagemActivity.this, "Erro ao adicionar viagem", Toast.LENGTH_SHORT).show();
+                }
+
+                // Navegar de volta para HomeActivity
+                Intent intent = new Intent(AddViagemActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<Resposta> call, Throwable t) {
+                Toast.makeText(AddViagemActivity.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         Helper dbHelper = new Helper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
