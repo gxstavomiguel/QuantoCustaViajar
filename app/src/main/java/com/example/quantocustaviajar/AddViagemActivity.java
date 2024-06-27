@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddViagemActivity extends AppCompatActivity {
 
-    private EditText  etTotalViajantes, etDataInicio;
+    private EditText etTotalViajantes, etDataInicio;
     private Button btnVoltar, btnConfirmAddViagem;
     private Calendar calendar;
 
@@ -49,7 +49,6 @@ public class AddViagemActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, destinos);
         etDestino.setAdapter(adapter);
-
 
 
         etTotalViajantes = findViewById(R.id.etTotalViajantes);
@@ -116,11 +115,80 @@ public class AddViagemActivity extends AppCompatActivity {
         etDataInicio.setText(sdf.format(calendar.getTime()));
     }
 
+//    private void addViagem(String destino, String totalViajantes, String dataInicio) {
+//        // Construir o objeto TB_VIAGEM com os dados fornecidos
+//        TB_VIAGEM viagem = new TB_VIAGEM();
+//
+//
+//
+//        viagem.setTotalViajantes(Integer.parseInt(totalViajantes));
+//        viagem.setCustoPorPessoa(viagem.getCustoTotalViagem() / viagem.getTotalViajantes());
+//        viagem.setLocal(destino);
+//
+//        // Enviar a requisição de cadastro de viagem
+//        Call<Resposta> call = viagemAPI.cadastrarViagem(viagem);
+//        call.enqueue(new Callback<Resposta>() {
+//            @Override
+//            public void onResponse(Call<Resposta> call, Response<Resposta> response) {
+//                if (response.isSuccessful()) {
+//                    Resposta resposta = response.body();
+//                    if (resposta != null && resposta.isSucesso()) {
+//                        Toast.makeText(AddViagemActivity.this, "Viagem adicionada com sucesso", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(AddViagemActivity.this, "Erro ao adicionar viagem: " + resposta.getMensagem(), Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    Toast.makeText(AddViagemActivity.this, "Erro ao adicionar viagem", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                // Navegar de volta para HomeActivity
+//                Intent intent = new Intent(AddViagemActivity.this, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Resposta> call, Throwable t) {
+//                Toast.makeText(AddViagemActivity.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        Helper dbHelper = new Helper(this);
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//
+//        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM viagem WHERE status = 'aberto'", null);
+//        if (cursor.moveToFirst() && cursor.getInt(0) > 0) {
+//            Toast.makeText(this, "Já existe uma viagem em andamento. Finalize-a antes de criar uma nova.", Toast.LENGTH_SHORT).show();
+//        } else {
+//            String insertQuery = "INSERT INTO viagem (destino, qt_pessoas, data_inicio, status) VALUES (?, ?, ?, ?)";
+//            db.execSQL(insertQuery, new String[]{destino, totalViajantes, dataInicio, "aberto"});
+//
+//            Toast.makeText(this, "Viagem adicionada com sucesso", Toast.LENGTH_SHORT).show();
+//
+//            Intent intent = new Intent(AddViagemActivity.this, HomeActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//        cursor.close();
+//    }
+//}
+
     private void addViagem(String destino, String totalViajantes, String dataInicio) {
         // Construir o objeto TB_VIAGEM com os dados fornecidos
         TB_VIAGEM viagem = new TB_VIAGEM();
-        viagem.setTotalViajantes(Integer.parseInt(totalViajantes));
-        viagem.setCustoPorPessoa(viagem.getCustoTotalViagem() / viagem.getTotalViajantes());
+
+        // Definir o total de viajantes e verificar se é um número válido
+        int totalViajantesInt = Integer.parseInt(totalViajantes);
+        viagem.setTotalViajantes(totalViajantesInt);
+
+        // Supondo que o custo total da viagem já foi definido em algum ponto do seu código
+        double custoTotalViagem = viagem.getCustoTotalViagem();
+
+        // Calcular o custo por pessoa
+        double custoPorPessoa = custoTotalViagem / totalViajantesInt;
+        viagem.setCustoPorPessoa(custoPorPessoa);
+
+        // Definir o local da viagem
         viagem.setLocal(destino);
 
         // Enviar a requisição de cadastro de viagem
